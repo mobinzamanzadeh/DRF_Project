@@ -1,0 +1,25 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N801" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="blog.views.blog.objects" />
+          <option value="Pishgaman_Project.settings.EMAIL_USE_TLS" />
+          <option value="Pishgaman_Project.settings.EMAIL_HOST" />
+          <option value="Pishgaman_Project.settings.EMAIL_HOST_USER" />
+          <option value="Pishgaman_Project.settings.EMAIL_HOST_PASSWORD" />
+          <option value="Pishgaman_Project.settings.EMAIL_PORT" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
