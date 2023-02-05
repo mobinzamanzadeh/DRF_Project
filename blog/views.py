@@ -5,5 +5,5 @@ from .models import Article
 
 class ArticleList(ListView):
     def get_queryset(self):
-        return Article.objects.filter(status=False)
+        return Article.objects.filter(status=True)
 
