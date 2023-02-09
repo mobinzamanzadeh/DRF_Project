@@ -127,6 +127,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        # اگر کاربر وارد شده باشد بتواند تغییر دهد در غیر این صورت فقط بخواند
+        # این قسمت یک پرمیژن کلی برای همه قسمت ها است
+
+        'api.permissions.IsStaffOrReadOnly',
     ]
 }
