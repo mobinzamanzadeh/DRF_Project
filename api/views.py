@@ -12,13 +12,13 @@ from django.contrib.auth.models import User
 # serializer_class = ArticleSerializer
 
 
-class ArticleList(RetrieveAPIView):
+class ArticleList(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = IsStaffOrReadOnly, IsَAuthorOrReadOnly
 
 
-class ArticleDetail(RetrieveAPIView):
+class ArticleDetail(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     # فیلدی که قرار است بر اساس اون انتخاب بشه و نمایش بدیم lookup_fields
@@ -31,21 +31,6 @@ class ArticleDetail(RetrieveAPIView):
 
 
 # با تغییر متد های داخل کلاس میتوان قابلیت های کار با api مثل get, update رو اضافه کرد
-
-class ArticleDelete(RetrieveDestroyAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
-
-class ArticleUpdate(UpdateAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
-
-class ArticleCreate(ListCreateAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
 
 class UserList(ListCreateAPIView):
     queryset = User.objects.all()
