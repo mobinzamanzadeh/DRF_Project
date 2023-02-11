@@ -132,5 +132,15 @@ REST_FRAMEWORK = {
         # این قسمت یک پرمیژن کلی برای همه قسمت ها است
 
         'api.permissions.IsStaffOrReadOnly',
+    ],
+    # Authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # jwt
+        # knox
+        # oauth
+
     ]
 }
