@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-from api.views import RevokeToken
+# from api.views import RevokeToken
 
 
 urlpatterns = [
@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     # path('api-auth/', include('rest_framework.urls')),
-    path('api/token-auth/', obtain_auth_token),
-    path('api/revoke/', RevokeToken.as_view()),
+    # path('api/token-auth/', obtain_auth_token),
+    # path('api/revoke/', RevokeToken.as_view()),
+    path('api/rest-auth/', include('dj_rest_auth.urls')),
+    path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls'))
 ]

@@ -30,14 +30,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'rest_framework.authtoken',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'dj_rest_auth',
     'blog',
     'api',
 ]
@@ -145,3 +151,5 @@ REST_FRAMEWORK = {
 
     ]
 }
+
+SITE_ID = 1
