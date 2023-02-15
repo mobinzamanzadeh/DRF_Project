@@ -1,6 +1,4 @@
-from rest_framework.permissions import IsAdminUser
-from rest_framework.response import Response
-from rest_framework.views import APIView
+
 from .permissions import IsSuperUser, IsStaffOrReadOnly, IsَAuthorOrReadOnly, IsَSuperuserOrStaffReadOnly
 from blog.models import Article
 from .serializers import ArticleSerializer, UserSerializer
@@ -44,12 +42,3 @@ class UserDetail(RetrieveDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsSuperUser, IsَSuperuserOrStaffReadOnly)
-
-
-# class RevokeToken(APIView):
-# permission_classes = (IsSuperUser,)
-
-# @staticmethod
-# def delete(request):
-# request.auth.delete()
-# return Response(status=204)
