@@ -5,7 +5,7 @@ from blog.models import Article
 from .serializers import ArticleSerializer, UserSerializer
 from rest_framework.generics import ListAPIView
 from rest_framework.generics import *
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 # class ArticleList(RetrieveUpdateDestroyAPIView):
@@ -28,7 +28,9 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action in ['list', 'creat']:
-            permission_classes = [IsStaffOrReadOnly]
+            permission_classes = [
+                IsStaffOrReadOnly,
+            ]
         else:
             permission_classes = [IsStaffOrReadOnly, IsَAuthorOrReadOnly]
         return [permission() for permission in permission_classes]
@@ -48,6 +50,8 @@ class ArticleViewSet(viewsets.ModelViewSet):
 #     permission_classes = (IsSuperUser, IsَSuperuserOrStaffReadOnly)
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsَSuperuserOrStaffReadOnly,)
+    permission_classes = (
+        IsَSuperuserOrStaffReadOnly,
+                          )
