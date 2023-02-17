@@ -23,8 +23,17 @@ from django.contrib.auth import get_user_model
 
 # نوشتن view ها با view set
 class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+
+    def get_queryset(self):
+        queryset = Article.objects.all()
+        status = self.request.query_params.get('status')
+        auther = self.request.query_params.get('auther')
+        if status is not None:
+            queryset = queryset.filter(status=status)
+        if auther is not None:
+            queryset = queryset.filter(auther__username=auther)
+        return queryset
 
     def get_permissions(self):
         if self.action in ['list', 'creat']:
