@@ -24,16 +24,20 @@ from django.contrib.auth import get_user_model
 # نوشتن view ها با view set
 class ArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
+    queryset = Article.objects.all()
+    # Filter BackEnd:
+    filterset_fields = ["status", "auther"]
 
-    def get_queryset(self):
-        queryset = Article.objects.all()
-        status = self.request.query_params.get('status')
-        auther = self.request.query_params.get('auther')
-        if status is not None:
-            queryset = queryset.filter(status=status)
-        if auther is not None:
-            queryset = queryset.filter(auther__username=auther)
-        return queryset
+    # Filter Query Parameters:
+    # def get_queryset(self):
+    #     queryset = Article.objects.all()
+    #     status = self.request.query_params.get('status')
+    #     auther = self.request.query_params.get('auther')
+    #     if status is not None:
+    #         queryset = queryset.filter(status=status)
+    #     if auther is not None:
+    #         queryset = queryset.filter(auther__username=auther)
+    #     return queryset
 
     def get_permissions(self):
         if self.action in ['list', 'creat']:
